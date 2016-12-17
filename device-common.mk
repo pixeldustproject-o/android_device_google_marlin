@@ -106,6 +106,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += fs_config_files \
                     fs_config_dirs
 
+# For "make bacon" to work properly
+PRODUCT_PACKAGES += mksquashfsimage.sh \
+		    imgdiff \
+		    bsdiff \
+		    shflags \
+		    aapt \
+		    mkf2fuserimg.sh \
+		    img2simg \
+		    mksquashfs \
+		    delta_generator \
+		    brillo_update_payload
+
 # Audio configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
