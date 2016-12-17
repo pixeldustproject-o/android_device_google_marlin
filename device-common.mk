@@ -79,6 +79,18 @@ PRODUCT_PACKAGES += fs_config_files \
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
 
+# For "make bacon" to work properly
+PRODUCT_PACKAGES += mksquashfsimage.sh \
+		    imgdiff \
+		    bsdiff \
+		    shflags \
+		    aapt \
+		    mkf2fuserimg.sh \
+		    img2simg \
+		    mksquashfs \
+		    delta_generator \
+		    brillo_update_payload
+
 # Audio configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
