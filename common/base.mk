@@ -844,11 +844,6 @@ PRODUCT_COPY_FILES += \
 #Enabling video for live effects
 -include frameworks/base/data/videos/VideoPackage1.mk
 
-#TODO: move to device.mk
-# dm-verity definitions
-PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/platform/soc/624000.ufshc/by-name/system
-$(call inherit-product, build/target/product/verity.mk)
-
 #skip boot jars check
 SKIP_BOOT_JARS_CHECK := true
 
