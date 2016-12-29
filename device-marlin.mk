@@ -72,3 +72,5 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprint.marlin
+
+$(call inherit-product-if-exists, vendor/google_devices/marlin/marlin-vendor.mk)
