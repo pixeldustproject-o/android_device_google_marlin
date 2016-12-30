@@ -632,3 +632,7 @@ PRODUCT_PACKAGES += \
     libbacktrace.vndk-sp\
     libunwind.vndk-sp\
     liblzma.vndk-sp\
+
+# Update engine
+PRODUCT_PACKAGES += brillo_update_payload
+
