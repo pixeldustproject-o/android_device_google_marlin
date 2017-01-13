@@ -18,6 +18,9 @@ lib64/libuiblur.so|4b3fabf5ded7c4af531abde681676fc5e9248494
 -priv-app/SprintDM/SprintDM.apk
 -priv-app/SprintHM/SprintHM.apk
 
+# Subsystem Restart
+bin/ssr_setup
+
 # Time Services
 -vendor/lib/libtime_genoff.so
 -vendor/lib64/libtime_genoff.so
