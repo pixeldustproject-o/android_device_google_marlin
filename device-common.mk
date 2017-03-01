@@ -671,3 +671,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.use_fifo_ui=1
 
+# Pixel Experience
+PRODUCT_COPY_FILES += \
+  device/google/marlin/nexus.xml:system/etc/sysconfig/nexus.xml
+
