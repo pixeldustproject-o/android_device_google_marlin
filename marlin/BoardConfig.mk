@@ -28,14 +28,7 @@ ENABLE_CPUSETS := true
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
-TARGET_NO_RECOVERY := true
-ifneq ($(findstring aosp_marlin_svelte, $(TARGET_PRODUCT)),)
-TARGET_RECOVERY_FSTAB := device/google/marlin/fstab.aosp_svelte
-else
-TARGET_RECOVERY_FSTAB := device/google/marlin/fstab.common
-endif
-BOARD_USES_RECOVERY_AS_BOOT := true
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+TARGET_RECOVERY_FSTAB := device/google/marlin/recovery/root/etc/twrp.fstab
 BOOTLOADER_GCC_VERSION := arm-eabi-4.8
 # use msm8996 LK configuration
 BOOTLOADER_PLATFORM := msm8996
@@ -239,3 +232,11 @@ BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+TW_THEME := portrait_hdpi
+BOARD_SUPPRESS_SECURE_ERASE := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_DEFAULT_BRIGHTNESS := "80"
+TW_INCLUDE_CRYPTO := true
+AB_OTA_UPDATER := true
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
