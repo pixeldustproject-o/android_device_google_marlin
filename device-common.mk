@@ -449,6 +449,7 @@ PRODUCT_PACKAGES += \
 # NFC packages
 PRODUCT_PACKAGES += \
     NfcNci \
+    nfc_nci.pn54x.default \
     Tag \
     android.hardware.nfc@1.0-impl
 
