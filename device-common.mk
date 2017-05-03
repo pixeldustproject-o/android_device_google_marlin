@@ -638,6 +638,10 @@ PRODUCT_PACKAGES += \
     libunwind.vndk-sp\
     liblzma.vndk-sp\
 
+# UI
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.use_fifo_ui=1
+
 # Update engine
 PRODUCT_PACKAGES += brillo_update_payload
 
