@@ -239,4 +239,4 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_DEFAULT_BRIGHTNESS := "80"
 TW_INCLUDE_CRYPTO := true
 AB_OTA_UPDATER := true
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
+#TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
