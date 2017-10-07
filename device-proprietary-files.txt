@@ -11,8 +11,6 @@ lib64/libuiblur.so|4b3fabf5ded7c4af531abde681676fc5e9248494
 
 # IMS/HD Voice
 -priv-app/CNEService/CNEService.apk
--app/ims/ims.apk
--app/imssettings/imssettings.apk
 
 # Sprint
 -priv-app/SprintDM/SprintDM.apk
@@ -36,3 +34,16 @@ etc/permissions/vzw_sso_permissions.xml
 -priv-app/VZWAVS/VZWAVS.apk:priv-app/VZWAVS/VZWAVS.apk:PRESIGNED
 -priv-app/VzwLcSilent/VzwLcSilent.apk:priv-app/VzwLcSilent/VzwLcSilent.apk:PRESIGNED
 -priv-app/VzwOmaTrigger/VzwOmaTrigger.apk:priv-app/VzwOmaTrigger/VzwOmaTrigger.apk:PRESIGNED
+
+# Self Extractor System list
+bin/pktlogconf
+etc/permissions/com.android.vzwomatrigger.xml
+etc/permissions/com.google.android.camera.experimental2016.xml
+etc/permissions/privapp-permissions-marlin.xml
+-framework/com.google.android.camera.experimental2016.jar
+lib/libaptXHD_encoder.so
+lib/libaptX_encoder.so
+lib64/libaptXHD_encoder.so
+lib64/libaptX_encoder.so
+lib64/vendor.qti.qcril.am@1.0.so
+lib64/vendor.qti.atcmdfwd@1.0.so
