@@ -56,7 +56,7 @@ setup_vendor "$DEVICE" "$VENDOR" "$PIXELDUST_ROOT"
 write_marlin_headers
 
 # The standard blobs
-write_makefiles "$MY_DIR"/device-proprietary-files.txt
+write_makefiles "$MY_DIR"/device-proprietary-files.txt true
 
 # Done
 write_footers
