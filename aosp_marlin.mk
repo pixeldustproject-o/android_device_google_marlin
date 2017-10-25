@@ -34,7 +34,7 @@ PRODUCT_RESTRICT_VENDOR_FILES := true
 PRODUCT_COPY_FILES += device/google/marlin/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.marlin
 
 $(call inherit-product, device/google/marlin/device-marlin.mk)
-$(call inherit-product-if-exists, vendor/google_devices/marlin/device-vendor-marlin.mk)
+$(call inherit-product-if-exists, vendor/google/marlin/device-vendor-marlin.mk)
 
 PRODUCT_PACKAGES += \
     Launcher3 \
