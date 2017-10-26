@@ -3,9 +3,6 @@ etc/cne/Nexus/ATT/ATT_profiles.xml
 etc/cne/Nexus/ROW/ROW_profiles.xml
 etc/cne/Nexus/VZW/VZW_profiles.xml
 
-# Display
-lib64/libuiblur.so|4b3fabf5ded7c4af531abde681676fc5e9248494
-
 # Hotword Enrollment for WCD9335
 -priv-app/HotwordEnrollmentWCD9335/HotwordEnrollmentWCD9335.apk:priv-app/HotwordEnrollmentWCD9335/HotwordEnrollmentWCD9335.apk:PRESIGNED
 
@@ -15,13 +12,6 @@ lib64/libuiblur.so|4b3fabf5ded7c4af531abde681676fc5e9248494
 # Sprint
 -priv-app/SprintDM/SprintDM.apk
 -priv-app/SprintHM/SprintHM.apk
-
-# Subsystem Restart
-bin/ssr_setup
-
-# Time Services
--vendor/lib/libtime_genoff.so
--vendor/lib64/libtime_genoff.so
 
 # VZW
 -app/VZWAPNLib/VZWAPNLib.apk:app/VZWAPNLib/VZWAPNLib.apk:PRESIGNED
