@@ -72,3 +72,5 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprint.sailfish
+
+$(call inherit-product-if-exists, vendor/google/marlin/marlin-vendor.mk)

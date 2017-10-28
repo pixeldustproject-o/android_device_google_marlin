@@ -192,7 +192,7 @@ TARGET_BOARD_KERNEL_HEADERS := device/google/marlin/kernel-headers
 # Install odex files into the other system image
 BOARD_USES_SYSTEM_OTHER_ODEX := true
 
--include vendor/google_devices/sailfish/BoardConfigVendor.mk
+-include vendor/google/sailfish/BoardConfigVendor.mk
 # Build a separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
 
@@ -206,3 +206,9 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 DEVICE_MANIFEST_FILE := device/google/marlin/manifest.xml
 DEVICE_MATRIX_FILE   := device/google/marlin/compatibility_matrix.xml
+
+# Kernel
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_COMPILE_WITH_MSM_KERNEL := true
+TARGET_KERNEL_CONFIG := pixeldust_marlin_defconfig
+TARGET_KERNEL_SOURCE := kernel/google/marlin
