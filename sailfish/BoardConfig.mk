@@ -3,6 +3,9 @@
 # Product-specific compile-time definitions
 #
 
+# Allow PD config to override others
+-include device/google/marlin/BoardConfigPixelDust.mk
+
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOOTLOADER_BOARD_NAME := sailfish
 TARGET_BOARD_INFO_FILE := device/google/marlin/sailfish/board-info.txt
