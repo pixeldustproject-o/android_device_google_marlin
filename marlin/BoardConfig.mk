@@ -3,6 +3,9 @@
 # Product-specific compile-time definitions
 #
 
+# Allow PD config to override others
+-include device/google/marlin/BoardConfigPixelDust.mk
+
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOOTLOADER_BOARD_NAME := marlin
 TARGET_BOARD_INFO_FILE := device/google/marlin/marlin/board-info.txt
@@ -224,9 +227,3 @@ endif
 
 DEVICE_MANIFEST_FILE := device/google/marlin/manifest.xml
 DEVICE_MATRIX_FILE   := device/google/marlin/compatibility_matrix.xml
-
-# Kernel
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_COMPILE_WITH_MSM_KERNEL := true
-TARGET_KERNEL_CONFIG := pixeldust_marlin_defconfig
-TARGET_KERNEL_SOURCE := kernel/google/marlin
