@@ -9,6 +9,9 @@ etc/cne/Nexus/VZW/VZW_profiles.xml
 # IMS/HD Voice
 -priv-app/CNEService/CNEService.apk
 
+# RIL
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+
 # Sprint
 -priv-app/SprintDM/SprintDM.apk
 -priv-app/SprintHM/SprintHM.apk
