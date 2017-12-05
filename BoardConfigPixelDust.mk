@@ -16,7 +16,7 @@ BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy/verizon
 
 # Snapdragon LLVM
-TARGET_USE_SDCLANG := true
+TARGET_USE_SDCLANG := false
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
