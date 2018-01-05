@@ -54,7 +54,7 @@ $(call inherit-product, device/google/marlin/common/common64.mk)
 PRODUCT_PACKAGES += libGLES_android
 PRODUCT_PACKAGES += SSRestartDetector
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += TelephonyMonitor
 endif
 
@@ -276,7 +276,7 @@ PRODUCT_PACKAGES += \
     nanoapp_cmd
 
 # sensor utilities (only for userdebug and eng builds)
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
     nanotool \
     sensortest
@@ -346,7 +346,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.mode=concurrent
 
 # Enable SM log mechanism by default
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.smlog_switch=1 \
     ro.radio.log_prefix="modem_log_" \
@@ -387,7 +387,7 @@ PRODUCT_COPY_FILES += \
 INIT_COMMON_DIAG_RC := $(TARGET_COPY_OUT_VENDOR)/etc/init/init.diag.rc
 
 # Modem debugger
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
     device/google/marlin/init.common.diag.rc.userdebug:$(INIT_COMMON_DIAG_RC)
 
@@ -445,8 +445,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     device/google/marlin/preloads_copy.sh:system/bin/preloads_copy.sh
 
-PRODUCT_PACKAGES_DEBUG += \
-    update_engine_client
+#PRODUCT_PACKAGES_DEBUG += \
+#    update_engine_client
 
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
@@ -496,7 +496,7 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
 
 # Library used for VTS tests  (only for userdebug and eng builds)
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 # For VTS profiling.
 PRODUCT_PACKAGES += \
      libvts_profiling \
@@ -514,8 +514,8 @@ PRODUCT_COPY_FILES += \
 # Bootloader HAL used for A/B updates.
 PRODUCT_PACKAGES += \
     bootctrl.msm8996
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl
+#PRODUCT_PACKAGES_DEBUG += \
+#    bootctl
 
 # Storage: for factory reset protection feature
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -577,7 +577,7 @@ endif
 PRODUCT_PACKAGES += \
     toybox_static
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 ifeq (,$(filter aosp_marlin aosp_sailfish, $(TARGET_PRODUCT)))
 PRODUCT_PACKAGES += \
     NexusLogger
@@ -586,7 +586,7 @@ endif
 
 # b/30349163
 # Set Marlin/Sailfish default log size on userdebug/eng build to 1M
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=1M
 endif
 
