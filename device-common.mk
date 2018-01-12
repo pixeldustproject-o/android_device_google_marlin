@@ -102,6 +102,185 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.use_fifo_ui=1
 
+# system.prop for msm8996
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.hw=1 \
+    debug.egl.hw=1 \
+    debug.gralloc.enable_fb_ubwc=1 \
+    dalvik.vm.heapsize=36m \
+    dev.pm.dyn_samplingrate=1 \
+    persist.demo.hdmirotationlock=false \
+    qcom.hw.aac.encoder=true
+
+# system prop for enabling/disabling Android XLAT
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.net.doxlat=true
+
+# system props for the MM modules
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true \
+    media.stagefright.enable-fma2dp=true \
+    media.stagefright.enable-scan=true \
+    mmp.enable.3g2=true \
+    media.aac_51_output_enabled=true \
+    mm.enable.sec.smoothstreaming=true \
+    av.debug.disable.pers.cache=true \
+    mm.enable.qcom_parser=1048575 \
+    persist.mm.enable.prefetch=true
+
+# Additional i/p buffer in case of encoder DCVS
+PRODUCT_PROPERTY_OVERRIDES += \
+    vidc.enc.dcvs.extra-buff-count=2
+
+# Set default power mode to low power for encoder
+PRODUCT_PROPERTY_OVERRIDES += \
+    vidc.debug.perf.mode=2
+
+# system props for the data modules
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.use_data_netmgrd=true \
+    persist.data.netmgrd.qos.enable=true \
+    persist.data.mode=concurrent
+
+# system props for time-services
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.timed.enable=true
+
+# system property for maximum number of HFP client connections
+PRODUCT_PROPERTY_OVERRIDES += \
+    bt.max.hfpclient.connections=1
+
+# system property for cabl
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.cabl=2
+
+# Simulate sdcard on /data/media
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.fuse_sdcard=true
+
+# system prop for Bluetooth SOC type
+PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.bluetooth.soc=rome
+
+# system prop for wipower support
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bluetooth.wipower=true \
+    ro.bluetooth.emb_wp_mode=true
+
+# Property for loading BDA from bdaddress module in kernel
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bt.bdaddr_path=/sys/module/bdaddress/parameters/bdaddress
+
+# Snapdragon value add features
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.audio.ssr=false \
+    ro.qc.sdk.audio.fluencetype=none \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true \
+    persist.rmnet.data.enable=true \
+    persist.data.wda.enable=true \
+    persist.data.df.dl_mode=5 \
+    persist.data.df.ul_mode=5 \
+    persist.data.df.agg.dl_pkt=10 \
+    persist.data.df.agg.dl_size=4096 \
+    persist.data.df.mux_count=8 \
+    persist.data.df.iwlan_mux=9 \
+    persist.data.df.dev_name=rmnet_usb0
+
+# property to enable user to access Google WFD settings
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0
+
+# property to specify the number of frames to skip before setting hint
+PRODUCT_PROPERTY_OVERRIDES += \
+    sdm.perf_hint_window=50
+
+# Audio props
+PRODUCT_PROPERTY_OVERRIDES += \
+    tunnel.audio.encode=false \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.video=true \
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.pcm.24bit.enable=true \
+    audio.offload.track.enable=true \
+    audio.deep_buffer.media=true \
+    use.voice.path.for.pcm.voip=true \
+    audio.offload.multiaac.enable=true \
+    audio_hal.period_multiplier=2
+
+# system prop for NFC DT
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.port=I2C
+
+# enable dsp gapless mode by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.offload.gapless.enabled=true
+
+# enable pbe effects
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.safx.pbe.enabled=true
+
+# parser input buffer size(256kb) in byte stream mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.parser.ip.buffer.size=262144
+
+# property to enable WFD WL solution
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.wl_library=libqti-wl.so
+
+# property for vendor specific library
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.gt_library=libqti-gt.so \
+    ro.vendor.at_library=libqti-at.so \
+    sys.games.gt.prof=1
+
+# Disable property for Dolby ds2
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.dolby.ds2.enabled=false
+
+# Disable property for hard bypass
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.dolby.ds2.hardbypass=false \
+    audio.offload.passthrough=false \
+    audio.offload.multiple.enabled=false
+
+# enable navigation bar
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0
+
+# property to enable VDS WFD solution
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.hwc.enable_vds=1
+
+# Enable stm events
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.dbg.coresight.config=stm_events
+
+# property to enable fingerprint
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.qfp=false
+
+# Default pd_enable value
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.pd_enable=0
+
+# Disable rotator split feature
+PRODUCT_PROPERTY_OVERRIDES += \
+    sdm.debug.disable_rotator_split=1
+
+# Increase cached app limit
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.fw.bg_apps_limit=60
+
+# Camera fullscreen doesn't show navigation bar
+PRODUCT_PROPERTY_OVERRIDES += \
+    Camera.no_navigation_bar=true
+
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += fs_config_files \
                     fs_config_dirs
