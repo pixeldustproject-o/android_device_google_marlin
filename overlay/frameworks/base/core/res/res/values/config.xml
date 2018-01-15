@@ -485,4 +485,10 @@
  
      <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
     <bool name="config_displayBlanksAfterDoze">true</bool>
+    <integer name="config_deviceLightCapabilities">75</integer>
+
+    <!-- Disable Project Fi app until a Fi SIM is inserted. -->
+    <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
+        <item>com.google.android.apps.tycho</item>
+    </string-array>
 </resources>
