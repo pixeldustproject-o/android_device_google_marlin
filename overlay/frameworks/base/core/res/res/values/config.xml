@@ -498,4 +498,8 @@
          to 75. -->
     <integer name="config_deviceLightCapabilities">75</integer>
 
+    <!-- Disable Project Fi app until a Fi SIM is inserted. -->
+    <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
+        <item>com.google.android.apps.tycho</item>
+    </string-array>
 </resources>
