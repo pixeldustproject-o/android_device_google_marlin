@@ -66,6 +66,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
 
+# touch
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.qti.inputopts.enable=true \
+    persist.vendor.qti.inputopts.movetouchslop=0.6
+
 # HWUI common settings
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.gradient_cache_size=1 \
