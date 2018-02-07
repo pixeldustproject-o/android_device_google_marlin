@@ -607,6 +607,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/google/marlin/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
+# skia(gl)
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.renderer=skiagl
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.vndk.version=26.1.0 \
 
