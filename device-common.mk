@@ -71,6 +71,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qti.inputopts.enable=true \
     persist.vendor.qti.inputopts.movetouchslop=0.6
 
+# cgroup.procs
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.cgroup_follow.enable=true
+
 # HWUI common settings
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.gradient_cache_size=1 \
