@@ -563,10 +563,6 @@ TARGET_RECOVERY_WIPE := \
 PRODUCT_COPY_FILES += \
     device/google/marlin/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
 
-# Default permission grant exceptions
-PRODUCT_COPY_FILES += \
-    device/google/marlin/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
-
 # A/B OTA dexopt package
 PRODUCT_PACKAGES += otapreopt_script
 
