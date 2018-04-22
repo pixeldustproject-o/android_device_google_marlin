@@ -17,8 +17,9 @@ BOARD_KERNEL_IMAGE_NAME := Image.lz4-dtb
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
-# Snapdragon LLVM
-#TARGET_USE_SDCLANG := true
+# Snapdragon LLVM (in order to use it, you are required to disable DragonTC)
+TARGET_USE_SDCLANG := true
+DISABLE_DTC_OPTS := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
