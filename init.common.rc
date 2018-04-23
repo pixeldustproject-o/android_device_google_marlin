@@ -80,7 +80,7 @@ on init
     chown system system /dev/cpuset/application/background/tasks
     chmod 0660 /dev/cpuset/application/background/tasks
 
-    # set default schedTune value for foreground/top-app (only affects EAS)
+    # set default schedTune value for foreground/top-app
     write /dev/stune/foreground/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.boost 10
     write /dev/stune/top-app/schedtune.prefer_idle 1
@@ -138,13 +138,13 @@ on late-fs
 
     # boot time fs tune
     write /sys/block/sda/queue/iostats 0
-    write /sys/block/sda/queue/scheduler maple
+    write /sys/block/sda/queue/scheduler sio
     write /sys/block/sda/queue/iosched/slice_idle 0
-    write /sys/block/sda/queue/read_ahead_kb 1024
+    write /sys/block/sda/queue/read_ahead_kb 2048
     write /sys/block/sda/queue/nr_requests 256
     write /sys/block/sda/queue/add_random 1
-    write /sys/block/dm-0/queue/read_ahead_kb 1024
-    write /sys/block/dm-1/queue/read_ahead_kb 1024
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/dm-1/queue/read_ahead_kb 2048
 
     # Start time daemon early so that the system time can be set early
     start time_daemon
@@ -331,8 +331,30 @@ on zygote-start
     chown system system /sys/class/devfreq/soc:qcom,gpubw/min_freq
     chmod 0660 /sys/class/devfreq/soc:qcom,gpubw/min_freq
 
-    # msm_thermal
-    write /sys/module/msm_thermal/parameters/enabled 1
+    chown system system /sys/class/timed_output/vibrator/voltage_level
+    chmod 0664 /sys/class/timed_output/vibrator/voltage_level
+
+    # Set elementalx permissions
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "elementalx"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "elementalx"
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "elementalx"
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "elementalx"
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/elementalx/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu1/cpufreq/elementalx/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu2/cpufreq/elementalx/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu3/cpufreq/elementalx/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/elementalx/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu1/cpufreq/elementalx/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu2/cpufreq/elementalx/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu3/cpufreq/elementalx/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/elementalx/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu1/cpufreq/elementalx/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu2/cpufreq/elementalx/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu3/cpufreq/elementalx/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/elementalx/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu1/cpufreq/elementalx/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu2/cpufreq/elementalx/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu3/cpufreq/elementalx/down_rate_limit_us
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -372,32 +394,35 @@ on early-boot
     wait_for_prop sys.qcom.devup 1
 
 on boot
-    # bring back main cores CPU 0,2
+    # Set swappiness and cache pressure
+    write /proc/sys/vm/swappiness 5
+    write /proc/sys/vm/vfs_cache_pressure 10
+
+    # bring back main cores
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu2/online 1
 
+    # setting the min/max frequency of silver cores
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
-
-    # EAS: Capping the max frequency of silver core to 1.6GHz
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
 
+    # setting the min/max frequency of gold cores
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
 
-    # if EAS is present, switch to sched governor (no effect if not EAS)
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
+    # configure governor settings for silver cluster
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "elementalx"
+    write /sys/devices/system/cpu/cpu0/cpufreq/elementalx/up_rate_limit_us 250
+    write /sys/devices/system/cpu/cpu0/cpufreq/elementalx/down_rate_limit_us 1500
 
-    # msm_thermal enable
-    write /sys/module/msm_thermal/parameters/enabled 1
+    # configure governor settings for gold cluster
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "elementalx"
+    write /sys/devices/system/cpu/cpu2/cpufreq/elementalx/up_rate_limit_us 250
+    write /sys/devices/system/cpu/cpu2/cpufreq/elementalx/down_rate_limit_us 1500
 
-    # Setting b.L scheduler parameters
-    write /proc/sys/kernel/sched_migration_fixup 1
-    write /proc/sys/kernel/sched_upmigrate 95
-    write /proc/sys/kernel/sched_downmigrate 90
-    write /proc/sys/kernel/sched_freq_inc_notify 400000
-    write /proc/sys/kernel/sched_freq_dec_notify 400000
-    write /proc/sys/kernel/sched_spill_nr_run 3
-    write /proc/sys/kernel/sched_init_task_load 100
+    # msm_thermal disable
+    write /sys/module/msm_thermal/parameters/enabled 0
+
     # WALT default
     write /proc/sys/kernel/sched_use_walt_cpu_util 1
     write /proc/sys/kernel/sched_use_walt_task_util 1
@@ -553,6 +578,9 @@ on boot
 
     # Backlight dimmer
     write /sys/module/mdss_fb/parameters/backlight_dimmer 1
+
+    # Disable bcl
+    write /sys/devices/soc/soc:qcom,bcl/mode disabled
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
