@@ -582,6 +582,9 @@ on boot
     # Disable bcl
     write /sys/devices/soc/soc:qcom,bcl/mode disabled
 
+    # Fastcharge
+    write /sys/kernel/fast_charge/force_fast_charge 1
+
 on property:wc_transport.start_hci=true
     start start_hci_filter
 
