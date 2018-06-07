@@ -589,6 +589,9 @@ on boot
     # Backlight dimmer
     write /sys/module/mdss_fb/parameters/backlight_dimmer 1
 
+    # Fastcharge
+    write /sys/kernel/fast_charge/force_fast_charge 1
+
 on property:wc_transport.start_hci=true
     start start_hci_filter
 
