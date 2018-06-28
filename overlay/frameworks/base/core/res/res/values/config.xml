@@ -496,4 +496,7 @@
     <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
         <item>com.google.android.apps.tycho</item>
     </string-array>
+
+    <!-- Whether device has turbo power charging support -->
+    <bool name="config_hasTurboPowerCharger">true</bool>
 </resources>
