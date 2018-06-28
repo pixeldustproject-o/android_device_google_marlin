@@ -499,4 +499,7 @@
 
     <!-- Whether device has turbo power charging support -->
     <bool name="config_hasTurboPowerCharger">true</bool>
+
+    <!-- Whether device has HBM support -->
+    <bool name="config_supportHighBrightness">true</bool>
 </resources>
