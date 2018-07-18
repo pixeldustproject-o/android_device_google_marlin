@@ -496,7 +496,4 @@
     <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
         <item>com.google.android.apps.tycho</item>
     </string-array>
-
-    <!-- HBM: Set this configuration flag true only if supported by your device! -->
-    <bool name="config_supportHighBrightness">true</bool>
 </resources>

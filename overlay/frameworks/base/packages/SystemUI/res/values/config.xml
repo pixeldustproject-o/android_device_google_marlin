@@ -44,5 +44,4 @@
     <string name="quick_settings_tiles_default" translatable="false">
         wifi,bt,dnd,flashlight,rotation,battery,cell,airplane,night
     </string>
-
 </resources>
